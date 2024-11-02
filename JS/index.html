@@ -13,8 +13,9 @@
             const url = 'https://eda.ru/api/v2/graphql';
             const data = [
                 {
-                    "variables": {},
-                    "query": "mutation {\n  sendReport(\n    request: {complaintType: MISSPELLING, reportSource: DESKTOP, description: \"test\"}\n  )\n}"
+                    "operationName":"user",
+                    "variables":{"id":"1"},
+                    "query":"query user($id: ID) {\n  user(request: {id: $id}) {\n    fullName\n    id\n    photo\n    personalProps {\n      isFollowed\n      __typename\n    }\n    publicStats {\n      publicCounters {\n        photosCount\n        recipesCount\n        storiesCount\n        commentsCount\n        __typename\n      }\n      followingsCount\n      followersCount\n      overallPosition\n      __typename\n    }\n    __typename\n  }\n}"
                 }
             ];
 
