@@ -1,4 +1,3 @@
-
 document.getElementById('loadHtml').addEventListener('click', function() { 
     const url = 'index.html'; 
 
