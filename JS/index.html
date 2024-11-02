@@ -6,10 +6,8 @@
     <title>Send POST Request</title>
 </head>
 <body>
-    <button id="sendRequest">Send Request</button>
-
     <script>
-        document.getElementById('sendRequest').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const url = 'https://eda.ru/api/v2/graphql';
             const data = [
                 {
