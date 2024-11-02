@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send POST Request</title>
+</head>
+<body>
+    <button id="sendRequest">Send Request</button>
+
+    <script>
+        document.getElementById('sendRequest').addEventListener('click', function() {
+            const url = 'https://eda.ru/api/v2/graphql';
+            const data = [
+                {
+                    "variables": {},
+                    "query": "mutation {\n  sendReport(\n    request: {complaintType: MISSPELLING, reportSource: DESKTOP, description: \"test\"}\n  )\n}"
+                }
+            ];
+
+            // Функция для получения заголовков
+            function getHeaders() {
+                const headers = new Headers();
+                headers.append('Content-Type', 'application/json');
+                headers.append('Accept', '*/*');
+                headers.append('Accept-Language', navigator.language || 'ru-RU,ru;q=0.9');
+                headers.append('User-Agent', navigator.userAgent);
+                headers.append('Sec-Ch-Ua-Platform', 'Windows');
+                headers.append('Sec-Ch-Ua', 'Not?A_Brand;v="99", "Chromium";v="130"');
+                headers.append('Sec-Ch-Ua-Mobile', '?0');
+                headers.append('Origin', window.location.origin);
+                headers.append('Sec-Fetch-Site', 'same-origin');
+                headers.append('Sec-Fetch-Mode', 'cors');
+                headers.append('Sec-Fetch-Dest', 'empty');
+                headers.append('X-Bug-Bounty', 'kolyasik');
+                headers.append('Priority', 'u=1, i');
+
+                // Добавление других заголовков, если они доступны
+                if (document.referrer) {
+                    headers.append('Referer', document.referrer);
+                }
+
+                return headers;
+            }
+
+            fetch(url, {
+                method: 'POST',
+                headers: getHeaders(),
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
