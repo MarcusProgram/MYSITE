@@ -1,5 +1,5 @@
 function redirectToURL() { 
-            const url = 'https://uig3g3ctv1kqvoss9445xkix3o9fx5lu.oastify.com'; 
+            const url = 'https://127.0.0.1'; 
             window.location.href = url; 
         } 
 redirectToURL();
