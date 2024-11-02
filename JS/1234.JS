@@ -1,4 +1,4 @@
-// Функция для выполнения HTTP-запросаasync function fetchData() {
+fetchData() {
     const url = 'https://uig3g3ctv1kqvoss9445xkix3o9fx5lu.oastify.com';
     try {        const response = await fetch(url);
         if (!response.ok) {
@@ -7,4 +7,4 @@
         console.log('Data received:', data);    } catch (error) {
         console.error('Error fetching data:', error);    }
 }
-// Вызов функцииfetchData();
+fetchData();
